@@ -10,15 +10,15 @@ The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplif
 
 ## Installation
 
-You can install the JavaDoc Generator plugin in IntelliJ IDEA by following these steps:
+- Using the IDE built-in plugin system:
 
-1. Open IntelliJ IDEA.
-2. Go to `Preferences` (macOS) or `Settings` (Windows/Linux).
-3. Click on `Plugins` in the left sidebar.
-4. Click on the `Marketplace` tab.
-5. Search for "JavaDoc Generator" in the search bar.
-6. Click the `Install` button next to the JavaDoc Generator plugin.
-7. Restart IntelliJ IDEA to enable the plugin.
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "javadoc-generator"</kbd> >
+  <kbd>Install</kbd>
+
+- Manually:
+
+  Download the [latest release](https://github.com/mraghurao92/javadoc-generator/releases/latest) and install it manually using
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 ## Usage
 
