@@ -1,4 +1,4 @@
-package com.github.mraghurao92.javadocgenerator.javadoc
+package com.github.mraghurao92.javadocgenerator.model
 
 class Choice {
     var index = 0

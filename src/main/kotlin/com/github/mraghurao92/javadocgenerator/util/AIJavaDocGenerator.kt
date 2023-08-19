@@ -1,7 +1,10 @@
-package com.github.mraghurao92.javadocgenerator.javadoc
+package com.github.mraghurao92.javadocgenerator.util
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.github.mraghurao92.javadocgenerator.model.Message
+import com.github.mraghurao92.javadocgenerator.model.PromptRequest
+import com.github.mraghurao92.javadocgenerator.model.PromptResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -12,6 +15,13 @@ import java.nio.charset.StandardCharsets
 
 class AIJavaDocGenerator {
 
+    /**
+     * Generates JavaDoc for the given code snippet.
+     *
+     * @param codeSnippet The code snippet to generate JavaDoc for.
+     * @return The generated JavaDoc as a String.
+     * @throws Exception if an error occurs during the generation process.
+     */
     @Throws(Exception::class)
     fun generateJavaDoc(codeSnippet: String): String? {
         val client = OkHttpClient()
@@ -27,7 +37,7 @@ class AIJavaDocGenerator {
             .url(AI_API_URL)
             .post(body)
             .addHeader("Content-Type", "application/json")
-            .addHeader("Authorization", "<ADD-YOUR-GPT-KEY>")
+            .addHeader("Authorization", "<YOUR-OPEN-API-KEY>")
             .build()
         val response: Response = client.newCall(request).execute()
         return if (response.isSuccessful) {
@@ -44,6 +54,13 @@ class AIJavaDocGenerator {
 
     companion object {
         private const val AI_API_URL = "https://api.openai.com/v1/chat/completions"
+
+        /**
+         * Generates a PromptRequest object for the given code snippet prompt.
+         *
+         * @param codeSnippetPrompt The code snippet prompt used to generate the prompt request.
+         * @return The generated PromptRequest object.
+         */
         private fun generatePromptRequest(codeSnippetPrompt: String): PromptRequest {
             val promptRequest = PromptRequest()
             val promptForDocStr =
@@ -54,6 +71,12 @@ class AIJavaDocGenerator {
             return promptRequest
         }
 
+        /**
+         * Constructs a new Message object with a specified codeSnippetPrompt.
+         *
+         * @param codeSnippetPrompt the code snippet prompt for the message
+         * @return the constructed Message object
+         */
         private fun getMessage(codeSnippetPrompt: String): Message {
             val message = Message()
             message.role = "user"

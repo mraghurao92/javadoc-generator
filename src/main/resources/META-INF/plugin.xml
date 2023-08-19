@@ -1,67 +1,28 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.mraghurao92.javadocgenerator</id>
-    <name>Javadoc-Generator Template</name>
+    <name>Javadoc Generator</name>
     <vendor>mraghurao92</vendor>
+    <description><![CDATA[
+        <ul>
+        <li>The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplifies the process of generating JavaDoc comments for methods.</li>
+         <li>It allows you to copy a method and then right-click to generate the corresponding JavaDoc comment automatically.</li>
+        </ul>
+
+
+        ]]>
+    </description>
+    <version>0.0.1</version>
 
     <depends>com.intellij.modules.platform</depends>
 
-<!--    <resource-bundle>messages.MyBundle</resource-bundle>-->
-
-<!--    <extensions defaultExtensionNs="com.intellij">-->
-<!--        <toolWindow factoryClass="com.github.mraghurao92.javadocgenerator.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>-->
-<!--    </extensions>-->
-
-<!--    <applicationListeners>-->
-<!--        <listener class="com.github.mraghurao92.javadocgenerator.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>-->
-<!--    </applicationListeners>-->
-<!--    <actions>-->
-<!--        <action-->
-<!--                id="TextCommentGeneratorAction"-->
-<!--                class="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction"-->
-<!--                text="The GenAi Javadoc"-->
-<!--                description="Replaces selected text with 'Replacement'."-->
-<!--        >-->
-<!--            <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
-<!--        </action>-->
-<!--    </actions>-->
-<!--    <actions>-->
-<!--        <action id="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction"-->
-<!--                class="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction" -->
-<!--                text="Add JavaDoc"-->
-<!--                description="This plugin takes method as input and create a javadoc using gen ai">-->
-<!--            <add-to-group group-id="BasicEditorPopupMenu" anchor="first"/>-->
-<!--        </action>-->
-<!--    </actions>-->
     <actions>
-        <action id="TextCommentGeneratorAction"
-                class="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction" text="Add Java Doc"
-                description="This plugin takes the method as input and generate a java doc ">
-            <add-to-group group-id="CodeMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="SLASH" second-keystroke="SLASH"/>
-        </action>
-
-        <action id="ReadHighlightedMethodAction"
-                class="com.github.mraghurao92.javadocgenerator.javadoc.ReadHighlightedMethodAction"
-                text="GenAI Java Doc" description="Generates java doc using gpt">
-<!--            <add-to-group group-id="Copy.Paste.Special" anchor="first"/>-->
+        <action id="ReadHighlightedMethodAndGenerateJavaDocAction"
+                class="com.github.mraghurao92.javadocgenerator.ReadHighlightedMethodAndGenerateJavaDocAction"
+                text="Generate Java Doc"
+                description="This plugin leverages the capabilities of ChatGPT AI to produce JavaDoc documentation for a provided input method">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
 
-<!--    <actions>-->
-<!--        <action id="TextCommentGeneratorAction"-->
-<!--                class="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction" text="Add Java Doc"-->
-<!--                description="This plugin takes the method as input and generate a java doc ">-->
-<!--            <add-to-group group-id="Copy.Paste.Special" anchor="last"/>-->
-<!--            <keyboard-shortcut keymap="$default" first-keystroke="SLASH" second-keystroke="SLASH"/>-->
-<!--        </action>-->
-<!--    </actions>-->
-<!--    <actions>-->
-<!--        <action id="TextCommentGeneratorAction"-->
-<!--                class="com.github.mraghurao92.javadocgenerator.javadoc.TextCommentGeneratorAction"-->
-<!--                text="TextCommentGeneratorAction">-->
-<!--            <add-to-group group-id="Copy.Paste.Special" anchor="first"/>-->
-<!--        </action>-->
-<!--    </actions>-->
 </idea-plugin>

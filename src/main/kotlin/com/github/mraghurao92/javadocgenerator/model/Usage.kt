@@ -1,4 +1,4 @@
-package com.github.mraghurao92.javadocgenerator.javadoc
+package com.github.mraghurao92.javadocgenerator.model
 
 class Usage {
     var prompt_tokens = 0

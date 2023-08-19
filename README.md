@@ -6,7 +6,6 @@ The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplif
 
 - Easy method JavaDoc generation: Copy a method and right-click to generate a JavaDoc comment.
 - Streamlined workflow: Quickly add method documentation without manual typing.
-- Customizable templates: Modify JavaDoc comment templates to suit your project's style.
 
 ## Installation
 
@@ -30,6 +29,6 @@ The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplif
 
 ## Feedback and Contributions
 
-If you encounter any issues, have suggestions, or would like to contribute, please feel free to open an issue or submit a pull request on the GitHub repository: [Link to GitHub Repository](https://github.com/your-username/your-intellij-plugin-repo).
+If you encounter any issues, have suggestions, or would like to contribute, please feel free to open an issue or submit a pull request on the GitHub repository: [Link to GitHub Repository](https://github.com/mraghurao92/javadoc-generator.git).
 
 
