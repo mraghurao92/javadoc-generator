@@ -2,3 +2,7 @@
 .idea
 .qodana
 build
+.github
+gradle
+gradlew.bat
+gradlew
