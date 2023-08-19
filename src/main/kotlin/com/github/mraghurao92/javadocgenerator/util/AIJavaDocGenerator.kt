@@ -15,12 +15,13 @@ import java.nio.charset.StandardCharsets
 
 class AIJavaDocGenerator {
 
+
     /**
-     * Generates JavaDoc for the given code snippet.
+     * Generates JavaDoc for the generateJavaDoc method.
      *
-     * @param codeSnippet The code snippet to generate JavaDoc for.
-     * @return The generated JavaDoc as a String.
-     * @throws Exception if an error occurs during the generation process.
+     * @param codeSnippet The code snippet to be processed.
+     * @return The content of the message from the first choice of the AI response, if the response is successful; otherwise, null.
+     * @throws Exception if an error occurs while executing the HTTP request.
      */
     @Throws(Exception::class)
     fun generateJavaDoc(codeSnippet: String): String? {

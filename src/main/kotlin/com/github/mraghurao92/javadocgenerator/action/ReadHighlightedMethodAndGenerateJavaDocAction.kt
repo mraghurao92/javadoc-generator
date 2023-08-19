@@ -1,4 +1,4 @@
-package com.github.mraghurao92.javadocgenerator
+package com.github.mraghurao92.javadocgenerator.action
 
 import com.github.mraghurao92.javadocgenerator.util.AIJavaDocGenerator
 import com.intellij.openapi.actionSystem.AnAction
