@@ -18,11 +18,12 @@
 
     <actions>
         <action id="ReadHighlightedMethodAndGenerateJavaDocAction"
-                class="com.github.mraghurao92.javadocgenerator.action.ReadHighlightedMethodAndGenerateJavaDocAction"
+                class="com.github.mraghurao92.javadocgenerator.action.GenerateJavaDocAction"
                 text="Generate JavaDoc"
                 description="This plugin leverages the capabilities of ChatGPT AI to produce JavaDoc documentation for a provided input method">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
+
 
 </idea-plugin>

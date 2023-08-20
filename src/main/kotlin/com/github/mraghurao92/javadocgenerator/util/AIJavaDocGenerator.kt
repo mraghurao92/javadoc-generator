@@ -2,6 +2,15 @@ package com.github.mraghurao92.javadocgenerator.util
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_HEADER_AUTHORIZATION
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_HEADER_CONTENT_TYPE
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_KEY
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_USER_ROLE
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.APPLICATION_JSON_VALUE
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.BEARER_TOKEN_TYPE
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.GPT_MODEL
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.OPEN_AI_API_URL
+import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.OPEN_AI_PROMPT
 import com.github.mraghurao92.javadocgenerator.model.Message
 import com.github.mraghurao92.javadocgenerator.model.PromptRequest
 import com.github.mraghurao92.javadocgenerator.model.PromptResponse
@@ -34,11 +43,13 @@ class AIJavaDocGenerator {
                 "".toMediaTypeOrNull(),
                 0
             )
+        val secretManager: SecretManager = SecretManager()
+        val apiKey = secretManager.getSecret(API_KEY)!!
         val request: Request = Request.Builder()
-            .url(AI_API_URL)
+            .url(OPEN_AI_API_URL)
             .post(body)
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Authorization", "<YOUR-OPEN-API-KEY>")
+            .addHeader(API_HEADER_CONTENT_TYPE, APPLICATION_JSON_VALUE)
+            .addHeader(API_HEADER_AUTHORIZATION, BEARER_TOKEN_TYPE + apiKey)
             .build()
         val response: Response = client.newCall(request).execute()
         return if (response.isSuccessful) {
@@ -48,13 +59,13 @@ class AIJavaDocGenerator {
                 .readValue(response.body?.string(), typeRef)
             aiResponse.choices?.get(0)?.message?.content
         } else {
-            null
+            return null
         }
+
     }
 
 
     companion object {
-        private const val AI_API_URL = "https://api.openai.com/v1/chat/completions"
 
         /**
          * Generates a PromptRequest object for the given code snippet prompt.
@@ -64,10 +75,9 @@ class AIJavaDocGenerator {
          */
         private fun generatePromptRequest(codeSnippetPrompt: String): PromptRequest {
             val promptRequest = PromptRequest()
-            val promptForDocStr =
-                "Provide java doc string for this method, only return javadoc not the method: $codeSnippetPrompt"
-            val message = getMessage(promptForDocStr)
-            promptRequest.model = "gpt-3.5-turbo";
+            val javaDocPrompt = OPEN_AI_PROMPT + codeSnippetPrompt
+            val message = getMessage(javaDocPrompt)
+            promptRequest.model = GPT_MODEL
             promptRequest.messages = listOf(message)
             return promptRequest
         }
@@ -80,7 +90,7 @@ class AIJavaDocGenerator {
          */
         private fun getMessage(codeSnippetPrompt: String): Message {
             val message = Message()
-            message.role = "user"
+            message.role = API_USER_ROLE
             message.content = codeSnippetPrompt
             return message
         }
