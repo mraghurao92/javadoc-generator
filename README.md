@@ -34,7 +34,7 @@ automatically.
 
 ![Plugin Demo - Generate JavaDoc](src/main/resources/demo1.png)
 
-![Plugin Demo - Generate JavaDoc](src/main/resources/demo2.png)
+![Plugin Demo - API KEY DIALOG BOX](src/main/resources/demo2.png)
 
 ![Plugin Demo - Generated JavaDocString](src/main/resources/demo3.png)
 
