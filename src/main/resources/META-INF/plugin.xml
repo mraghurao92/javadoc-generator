@@ -3,13 +3,12 @@
     <id>com.github.mraghurao92.javadocgenerator</id>
     <name>Javadoc Generator</name>
     <vendor>mraghurao92</vendor>
-    <description><![CDATA[
+    <description>
+        <![CDATA[
         <ul>
         <li>The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplifies the process of generating JavaDoc comments for methods.</li>
          <li>It allows you to copy a method and then right-click to generate the corresponding JavaDoc comment automatically.</li>
         </ul>
-
-
         ]]>
     </description>
     <version>0.0.1</version>
@@ -19,10 +18,11 @@
     <actions>
         <action id="ReadHighlightedMethodAndGenerateJavaDocAction"
                 class="com.github.mraghurao92.javadocgenerator.action.GenerateJavaDocAction"
-                text="Generate JavaDoc"
+                text="Java Doc"
                 description="This plugin leverages the capabilities of ChatGPT AI to produce JavaDoc documentation for a provided input method">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="GenerateGroup" anchor="first"/>
         </action>
+
     </actions>
 
 
