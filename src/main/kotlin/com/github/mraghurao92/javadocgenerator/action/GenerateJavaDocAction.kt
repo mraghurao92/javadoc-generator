@@ -83,11 +83,11 @@ class GenerateJavaDocAction : AnAction() {
 
     companion object {
         /**
-         * Generates a JavaDoc String for the given code snippet.
+         * Generates a JavaDoc string using the given code snippet.
          *
-         * @param codeSnippet the code snippet for which the JavaDoc String is to be generated
-         * @return the generated JavaDoc String
-         * @throws RuntimeException if an exception occurs while generating the JavaDoc String
+         * @param codeSnippet the code snippet to generate the JavaDoc from
+         * @return the generated JavaDoc string, or null if the code snippet is null
+         * @throws RuntimeException if an exception occurs during the generation process
          */
         private fun generateJavaDocString(codeSnippet: String?): String? {
             return try {
