@@ -1,4 +1,6 @@
 # JavaDoc Generator IntelliJ Plugin
+![JavaDoc Generator IntelliJ Plugin](src/main/resources/demo.png)
+
 
 The JavaDoc Generator IntelliJ Plugin is a plugin for IntelliJ IDEA that simplifies the process of generating JavaDoc
 comments for methods. It allows you to copy a method and then right-click to generate the corresponding JavaDoc comment
@@ -32,11 +34,18 @@ automatically.
 
 ## Demo
 
+*Right-click, select "Generate," and click "JavaDoc" to generate JavaDoc documentation.*
+
 ![Plugin Demo - Generate JavaDoc](src/main/resources/demo1.png)
+
+*Dialog Box to Enter OpenAPI Key for the First Time: You'll need to enter the key again unless you restart.*
 
 ![Plugin Demo - API KEY DIALOG BOX](src/main/resources/demo2.png)
 
+*JavaDoc comment generated for the copied method*
+
 ![Plugin Demo - Generated JavaDocString](src/main/resources/demo3.png)
+
 
 ## Feedback and Contributions
 
