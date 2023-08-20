@@ -38,7 +38,7 @@ automatically.
 
 ![Plugin Demo - Generate JavaDoc](src/main/resources/demo1.png)
 
-*Dialog Box to Enter OpenAPI Key for the First Time: You'll need to enter the key again unless you restart.*
+*Dialog Box to Enter OpenAPI Key for the First Time: You'll need to enter the key again if you restart IntelliJ or the system.*
 
 ![Plugin Demo - API KEY DIALOG BOX](src/main/resources/demo2.png)
 
