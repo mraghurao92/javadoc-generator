@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_HEADER_AUTHORIZATION
 import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_HEADER_CONTENT_TYPE
-import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_KEY
 import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.API_USER_ROLE
 import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.APPLICATION_JSON_VALUE
 import com.github.mraghurao92.javadocgenerator.constants.AppConstants.Companion.BEARER_TOKEN_TYPE
@@ -37,26 +36,19 @@ class AIJavaDocGenerator {
         val client = OkHttpClient()
         val body: RequestBody = ObjectMapper().writeValueAsString(
             generatePromptRequest(codeSnippet)
+        ).toByteArray(charset(StandardCharsets.UTF_8.name())).toRequestBody(
+            "".toMediaTypeOrNull(), 0
         )
-            .toByteArray(charset(StandardCharsets.UTF_8.name()))
-            .toRequestBody(
-                "".toMediaTypeOrNull(),
-                0
-            )
         val secretManager: SecretManager = SecretManager()
-        val apiKey = secretManager.getSecret(API_KEY)!!
-        val request: Request = Request.Builder()
-            .url(OPEN_AI_API_URL)
-            .post(body)
-            .addHeader(API_HEADER_CONTENT_TYPE, APPLICATION_JSON_VALUE)
-            .addHeader(API_HEADER_AUTHORIZATION, BEARER_TOKEN_TYPE + apiKey)
-            .build()
+        val apiKey = secretManager.getSecret()!!
+        val request: Request =
+            Request.Builder().url(OPEN_AI_API_URL).post(body).addHeader(API_HEADER_CONTENT_TYPE, APPLICATION_JSON_VALUE)
+                .addHeader(API_HEADER_AUTHORIZATION, BEARER_TOKEN_TYPE + apiKey).build()
         val response: Response = client.newCall(request).execute()
         return if (response.isSuccessful) {
             assert(response.body != null)
             val typeRef: TypeReference<PromptResponse> = object : TypeReference<PromptResponse>() {}
-            val aiResponse: PromptResponse = ObjectMapper()
-                .readValue(response.body?.string(), typeRef)
+            val aiResponse: PromptResponse = ObjectMapper().readValue(response.body?.string(), typeRef)
             aiResponse.choices?.get(0)?.message?.content
         } else {
             return null
@@ -73,6 +65,7 @@ class AIJavaDocGenerator {
          * @param codeSnippetPrompt The code snippet prompt used to generate the prompt request.
          * @return The generated PromptRequest object.
          */
+
         private fun generatePromptRequest(codeSnippetPrompt: String): PromptRequest {
             val promptRequest = PromptRequest()
             val javaDocPrompt = OPEN_AI_PROMPT + codeSnippetPrompt
@@ -94,5 +87,6 @@ class AIJavaDocGenerator {
             message.content = codeSnippetPrompt
             return message
         }
+
     }
 }

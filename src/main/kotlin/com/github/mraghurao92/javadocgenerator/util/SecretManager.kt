@@ -11,10 +11,9 @@ class SecretManager {
     /**
      * Retrieve the secret based on a given key.
      *
-     * @param key the key for the secret
      * @return the secret as a String or null if not found
      */
-    fun getSecret(key: String): String? {
+    fun getSecret(): String? {
         val credentials: Credentials? = PasswordSafe.instance.get(getCredentialAttribute())
         if (credentials != null) {
             return credentials.getPasswordAsString()

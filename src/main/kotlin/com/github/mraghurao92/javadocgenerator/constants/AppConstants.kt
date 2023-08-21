@@ -15,6 +15,13 @@ class AppConstants private constructor() {
         const val API_KEY_NULL_EMPTY_MESSAGE = "API KEY CANNOT BE NULL/EMPTY"
         const val PLUGIN_NAME = "JavaDoc Generator"
         const val BEARER_TOKEN_TYPE = "Bearer "
+        const val REPORT_TO_AUTHOR_ERROR_MESSAGE =
+            "Unable to generate JavaDoc for the selected method. Would you like to report this to the author?"
+        const val REPORT_TO_AUTHOR_MESSAGE = "Please enter a message to the author."
+        const val REPORT_TO_AUTHOR_TITLE = "Report to Author"
+        const val THANK_YOU_FEEDBACK_MESSAGE = "Thank you for your feedback!"
+        const val ENTER_FEEDBACK = "Please enter a message to the author."
+        const val FAILED_TO_GENERATE_JAVA_DOC = "Unable to generate JavaDoc for the selected text."
     }
 
 }
