@@ -25,7 +25,7 @@ repositories {
 dependencies {
 //    implementation(libs.annotations)
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
 
 }
